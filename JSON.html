@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JSON Demo</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Language" content="en-us" />
+		<meta name="Robots" content="Follow, Index" />
+		<meta name="Distribution" content="Worldwide" />
+		<meta name="Rating" content="General" />
+
+		<meta name="DESCRIPTION" content="JSON Demo for BYU-Idaho CIT 261 Class" />
+		<meta name="KEYWORDS" content="CIT 261, BYU-Idaho, Home Page" />
+		<meta name="Author" content="Michael Carey" />
+		<meta name="School" content="BYU-Idaho" />
+		
+		<link rel="stylesheet" href="content/main.css" />
+		<script src="scripts/main.js"></script>
+		
+		<script>
+		var empObj ={
+					"employees":
+						[
+							{"firstName":"John", "lastName":"Doe"}, 
+							{"firstName":"Anna", "lastName":"Smith"},
+							{"firstName":"Peter", "lastName":"Jones"}
+						]
+					}
+
+		var empTxt ='{ "employees" : [' +
+					'{ "firstName":"John" , "lastName":"Doe" },' +
+					'{ "firstName":"Anna" , "lastName":"Smith" },' +
+					'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+		</script>
+		
+	</head>
+	<body>
+		<h1>Michael Carey</h1>
+		<h2>CIT 261</h2>
+		<a href="index.html">Home</a><br/><br/>
+		
+		<h3>JSON Object</h3>
+&nbsp;&nbsp;var empObj ={<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;"employees":<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"firstName":"John", "lastName":"Doe"}, <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"firstName":"Anna", "lastName":"Smith"},<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"firstName":"Peter", "lastName":"Jones"}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+
+		<h3>JSON String</h3>
+&nbsp;&nbsp;var empTxt ='{ "employees" : [' +<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'{ "firstName":"John" , "lastName":"Doe" },' +<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'{ "firstName":"Anna" , "lastName":"Smith" },' +<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'{ "firstName":"Peter" , "lastName":"Jones" } ]}';<br/>
+		<br/>
+		
+		<h3>JSON Object without Conversion</h3>
+&nbsp;&nbsp;document.getElementById("rawObjOut").innerHTML =<br/>
+&nbsp;&nbsp;empObj.employees[1].firstName + " " + empObj.employees[1].lastName;<br/>
+
+		<p id="rawObjOut"></p>	
+
+		<script>
+			document.getElementById("rawObjOut").innerHTML =
+			empObj.employees[1].firstName + " " + empObj.employees[1].lastName;
+		</script>
+
+		<h3>JSON String to Object</h3>
+&nbsp;&nbsp;var obj = JSON.parse(empTxt);<br/>
+&nbsp;&nbsp;document.getElementById("jsonToObject").innerHTML =<br/>
+&nbsp;&nbsp;obj.employees[1].firstName + " " + obj.employees[1].lastName;<br/>
+
+		<p id="jsonToObject"></p>
+
+		<script>
+			var obj = JSON.parse(empTxt);
+			document.getElementById("jsonToObject").innerHTML =
+			obj.employees[1].firstName + " " + obj.employees[1].lastName;
+		</script>
+		
+		<h3>JSON Object to String</h3>
+&nbsp;&nbsp;var text = JSON.stringify(obj);<br/>
+&nbsp;&nbsp;document.getElementById("jsonToString").innerHTML = text;<br/>		
+
+		<p id="jsonToString"></p>
+
+		<script>
+			var text = JSON.stringify(obj);
+			document.getElementById("jsonToString").innerHTML = text;	
+		</script>
+		
+		<br/>
+		<br/>
+		<br/>
+	</body>
+</html>
