@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>DOM</title>
+		<title>DOM Manipulation</title>
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,18 +19,62 @@
 		
 		<link rel="stylesheet" href="content/main.css" />
 		<script src="scripts/main.js"></script>
-		
 	</head>
 	<body>
+		<script type="text/javascript">
+			function domTestAddP(inputText)
+			{
+				var para = document.createElement("P");
+				var node = document.createTextNode(inputText);
+				para.appendChild(node);
+
+				var element = document.getElementById("div1");
+				element.appendChild(para);
+			}
+
+			function domTestAddYouTube(inputText)
+			{
+				var iframe = document.createElement("IFRAME");
+
+				iframe.style.display = 'block';
+				iframe.style.margin = '0px auto';
+				iframe.width = '854';
+				iframe.height = '480';
+				iframe.src='https://www.youtube.com/embed/' + inputText;
+				iframe.frameborder = '0';
+
+				var element = document.getElementById("videoFrame1");
+
+				element.appendChild(iframe);
+			}
+		</script>
+
 		<div class="container body-content">
 			<div class="row">
                 <div class="col-md-12">
                     <h1>Michael Carey</h1>
-                    <h2>CIT 261 - DOM</h2>
-                    <a href="index.html">Home</a><br/><br/>
+                    <h2>CIT 261 - DOM Manipulation</h2>
+                    <a href="index.html">Home</a>
                 </div>
-                <div class="col-md-12">
+				<div class="row">
+					<div class="col-md-12"><hr /></div>
+				</div>
+				<div class="col-md-12">
+					<button onclick="domTestAddP('This is New')">Add paragraph Element</button><br /><br />
 
+					<label>Enter YouTube Hash: </lable> <input id="YouTubeId" type="text" value="hM9h1wN4rfU"></input><br />
+					<button onclick="domTestAddYouTube(document.getElementById('YouTubeId').value)">Add YouTube Video</button><br /><br />
+				</div>
+                <div class="col-md-12">
+					<div id="div1">
+						<p id="p1">This is a paragraph.</p>
+						<p id="p2">This is another paragraph.</p>
+					</div>
+					<div id="videoFrame1">
+					</div>
+				<div class="row">
+					<div class="col-md-12"><hr /><br/><br/></div>
+				</div>
                 </div>
             </div>
         </div>

@@ -142,7 +142,7 @@ td, th {
 }
 .divHeight
 {
-	height: 45px;
+	min-height: 40px;
 }
 /*
 div

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>XML HTTP Request</title>
+		<title>XMLHTTPRequest</title>
 
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,20 +19,83 @@
 		
 		<link rel="stylesheet" href="content/main.css" />
 		<script src="scripts/main.js"></script>
-		
 	</head>
 	<body>
 		<div class="container body-content">
 			<div class="row">
                 <div class="col-md-12">
                     <h1>Michael Carey</h1>
-                    <h2>CIT 261 - XML HTTP Request</h2>
+                    <h2>CIT 261 - XMLHTTPRequest</h2>
                     <a href="index.html">Home</a><br/><br/>
                 </div>
+				<div class="row">
+					<div class="col-md-12"><hr /></div>
+				</div>
                 <div class="col-md-12">
-
+					<a href="http://mbcarey.com/MLMLinkup/Api/ReturnCompanyList" target="_blank">ReturnCompanyList</a>
+					<a href="http://mbcarey.com/MLMLinkup/Search/GetMlmCompanyLogo/3" target="_blank">GetMlmCompanyLogo</a>
+                </div>
+                <div class="col-md-12">
+					<label>Click Twice to Load Data: </lable> <button onclick="loadData()">Load Data</button><br /><br />
+					<label>Enter Company Id: </lable> <input id="CompanyId" type="text" value=""></input><br />
+					<button onclick="getImage(document.getElementById('CompanyId').value)">Get Company Logo</button><br /><br />
+					<div id="ImgDiv"></div>
+					<p id="rawObjOut">rawObjectOut</p>
                 </div>
             </div>
         </div>
+
+		<script type="text/javascript">
+			var companyListJson = "";
+			var companyList = "";
+
+			function loadData()
+			{
+				var rawFile = new XMLHttpRequest();
+				// Cross site calls not normally allowed in browser
+				rawFile.open("GET", 'http://mbcarey.com/MLMLinkup/Api/ReturnCompanyList', true);
+				// Load from local development box
+				//rawFile.open("GET", 'http://localhost/mlmlinkup/Api/ReturnCompanyList', true);
+
+				rawFile.onreadystatechange = function () 
+				{
+					if(rawFile.readyState === 4 || rawFile.readyState === XMLHttpRequest.DONE)
+					{
+						if(rawFile.status === 200 || rawFile.status == 0)
+						{
+							companyListJson = rawFile.responseText;
+						}
+					}
+				}
+				rawFile.send();
+
+				document.getElementById("rawObjOut").innerHTML = "JSONData = " + companyListJson;
+				companyList = JSON.parse(companyListJson);
+			}
+
+			function getImage(id)
+			{
+				var imageItem = document.createElement("IMG");
+				var index = 0;
+
+				// Items from the Array maynot be sorted. Match the Company Id to the correct Array Element.
+				for(var ii=0; ii<companyList.length; ii++)
+				{
+					if(companyList[ii].Id == id )
+					{
+						index = ii;
+						break;
+					}
+				}
+
+				imageItem.width = JSON.stringify( companyList[index].Width );
+				imageItem.height = JSON.stringify( companyList[index].Height );
+				imageItem.src = 'http://mbcarey.com/MLMLinkup/Search/GetMlmCompanyLogo/' + companyList[index].Id;
+
+				var element = document.getElementById("ImgDiv");
+				element.appendChild(imageItem);
+			}
+
+		</script>
 	</body>
 </html>
