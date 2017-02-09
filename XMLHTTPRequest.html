@@ -80,36 +80,45 @@
 					checkElement.remove();
 				}
 
+				var checkElement = document.getElementById("ImgDiv");
+				if( checkElement != null )
+				{
+					checkElement.remove();
+				}
+				// Image Div
 				var divNode = document.createElement("DIV");
+				divNode.id = "ImgDiv";
+				var element = document.getElementById("ajaxData");
+				element.appendChild(divNode);
+
+				// Data dump Div
+				divNode = document.createElement("DIV");
 				divNode.id = "rawDataOut";
 				var node = document.createTextNode("JSONData = " + companyListJson);
 				divNode.appendChild(node);
 
-				var element = document.getElementById("ajaxData");
+				element = document.getElementById("ajaxData");
 				element.appendChild(divNode);
 			}
 
 			function getImage(id)
 			{
 				var imageItem = document.createElement("IMG");
-				var index = 0;
 
 				// Items from the Array maynot be sorted. Match the Company Id to the correct Array Element.
 				for(var ii=0; ii<companyList.length; ii++)
 				{
 					if(companyList[ii].Id == id )
 					{
-						index = ii;
+						imageItem.width = JSON.stringify( companyList[ii].Width );
+						imageItem.height = JSON.stringify( companyList[ii].Height );
+						imageItem.src = 'http://mbcarey.com/MLMLinkup/Search/GetMlmCompanyLogo/' + companyList[ii].Id;
+
+						var element = document.getElementById("ImgDiv");
+						element.appendChild(imageItem);
 						break;
 					}
 				}
-
-				imageItem.width = JSON.stringify( companyList[index].Width );
-				imageItem.height = JSON.stringify( companyList[index].Height );
-				imageItem.src = 'http://mbcarey.com/MLMLinkup/Search/GetMlmCompanyLogo/' + companyList[index].Id;
-
-				var element = document.getElementById("ImgDiv");
-				element.appendChild(imageItem);
 			}
 
 		</script>
