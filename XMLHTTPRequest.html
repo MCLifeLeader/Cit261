@@ -35,12 +35,11 @@
 					<a href="http://mbcarey.com/MLMLinkup/Api/ReturnCompanyList" target="_blank">ReturnCompanyList</a>
 					<a href="http://mbcarey.com/MLMLinkup/Search/GetMlmCompanyLogo/3" target="_blank">GetMlmCompanyLogo</a>
                 </div>
-                <div class="col-md-12">
+                <div id="ajaxData" class="col-md-12">
 					<label>Click Twice to Load Data: </lable> <button onclick="loadData()">Load Data</button><br /><br />
 					<label>Enter Company Id: </lable> <input id="CompanyId" type="text" value=""></input><br />
-					<button onclick="getImage(document.getElementById('CompanyId').value)">Get Company Logo</button><br /><br />
+					<button onclick="getImage(document.getElementById('CompanyId').value);">Get Company Logo</button><br /><br />
 					<div id="ImgDiv"></div>
-					<p id="rawObjOut">rawObjectOut</p>
                 </div>
             </div>
         </div>
@@ -49,28 +48,45 @@
 			var companyListJson = "";
 			var companyList = "";
 
-			function loadData()
+			var loadData = function ()
 			{
-				var rawFile = new XMLHttpRequest();
+				var xhr = new XMLHttpRequest();
 				// Cross site calls not normally allowed in browser
-				rawFile.open("GET", 'http://mbcarey.com/MLMLinkup/Api/ReturnCompanyList', true);
+				xhr.open("GET", 'http://mbcarey.com/MLMLinkup/Api/ReturnCompanyList', true);
 				// Load from local development box
-				//rawFile.open("GET", 'http://localhost/mlmlinkup/Api/ReturnCompanyList', true);
+				// xhr.open("GET", 'http://localhost/mlmlinkup/Api/ReturnCompanyList', true);
+				xhr.send(null);
 
-				rawFile.onreadystatechange = function () 
-				{
-					if(rawFile.readyState === 4 || rawFile.readyState === XMLHttpRequest.DONE)
-					{
-						if(rawFile.status === 200 || rawFile.status == 0)
-						{
-							companyListJson = rawFile.responseText;
+				xhr.onreadystatechange = function () {
+					if(xhr.readyState === 4 || xhr.readyState === XMLHttpRequest.DONE) {
+						if(xhr.status === 200 || xhr.status == 0) {
+							companyListJson = xhr.responseText;
+							companyList = JSON.parse(companyListJson);
+							useData();
+						}
+						else {
+							// Error
 						}
 					}
 				}
-				rawFile.send();
+			};
 
-				document.getElementById("rawObjOut").innerHTML = "JSONData = " + companyListJson;
-				companyList = JSON.parse(companyListJson);
+			function useData()
+			{
+				var checkElement = document.getElementById("rawDataOut");
+
+				if( checkElement != null )
+				{
+					checkElement.remove();
+				}
+
+				var divNode = document.createElement("DIV");
+				divNode.id = "rawDataOut";
+				var node = document.createTextNode("JSONData = " + companyListJson);
+				divNode.appendChild(node);
+
+				var element = document.getElementById("ajaxData");
+				element.appendChild(divNode);
 			}
 
 			function getImage(id)
