@@ -144,6 +144,12 @@ td, th {
 {
 	min-height: 40px;
 }
+.redBackgroundWhiteText
+{
+	background-color: red;
+	color: white;
+	font-weight: bold;
+}
 /*
 div
 {
