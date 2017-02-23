@@ -12,13 +12,115 @@
 		<meta name="Distribution" content="Worldwide" />
 		<meta name="Rating" content="General" />
 
-		<meta name="DESCRIPTION" content="Proficiency with the Code Topics Page BYU-Idaho CIT 261 Class" />
-		<meta name="KEYWORDS" content="CIT 261, BYU-Idaho, Home Page" />
+		<meta name="DESCRIPTION" content="Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays" />
+		<meta name="KEYWORDS" content="CIT 261, BYU-Idaho" />
 		<meta name="Author" content="Michael Carey" />
 		<meta name="School" content="BYU-Idaho" />
 		
 		<link rel="stylesheet" href="content/main.css" />
 		<script src="scripts/main.js"></script>
+
+		<script>
+			function runIfConditional() {
+
+				console.log(document.getElementById('StringA').value);
+				console.log(document.getElementById('StringB').value);
+
+				var resultsValue = "Entered Values: ";
+				if( document.getElementById('StringA').value == document.getElementById('StringB').value ) {
+					resultsValue += "|" + 
+					document.getElementById('StringA').value + 
+					"| / |" + 
+					document.getElementById('StringB').value +
+					"| are equal to";
+				}
+				else {
+					resultsValue += "|" + 
+					document.getElementById('StringA').value + 
+					"| / |" + 
+					document.getElementById('StringB').value +
+					"| are not equal to";
+				}
+				resultsValue += " and ";
+				if( document.getElementById('StringA').value === document.getElementById('StringB').value ) {
+					resultsValue += "|" + 
+					document.getElementById('StringA').value + 
+					"| / |" + 
+					document.getElementById('StringB').value +
+					"| are equal value and equal type<br/><br/>";
+				}
+				else {
+					resultsValue += "|" + 
+					document.getElementById('StringA').value + 
+					"| / |" + 
+					document.getElementById('StringB').value +
+					"| are not equal value and equal type<br/><br/>";
+				}
+
+				console.log(resultsValue);
+				document.getElementById("results").innerHTML = resultsValue;
+			}
+
+			function runForConditional() {
+				var stringCheck = document.getElementById('NumberA').value;
+
+				console.log(stringCheck);
+
+				if(!isNaN(stringCheck)) {
+					resultsValue = runLoop(stringCheck);
+				}
+				else {
+					resultsValue = "You did not Enter a pure Integer. You Entered |" + stringCheck + "|";
+				}
+
+				console.log(resultsValue);
+				document.getElementById("results").innerHTML = resultsValue;
+			}
+
+			function runLoop(count)
+			{
+				var resultsValue = "Loops: ";
+				
+				for(var ii=0; ii<count; ii++) {
+					resultsValue += "Iteration: " + ii + "<br/>";
+				}
+
+				return resultsValue;
+			}
+
+			function displayArrayContents() {
+				var stringCheck = document.getElementById('ParseArray').value;
+
+				console.log(stringCheck);
+
+				var resultsValue = "Array Contents: ";
+
+				if(stringCheck.includes(",") ) {
+					var myArray = stringCheck.split(",");
+
+					for(var ii=0; ii<myArray.length; ii++) {
+						resultsValue += "|" + myArray[ii] + "|<br/>";
+					}
+				}
+				else {
+					resultsValue = "You did not enter a comma seperated list.";
+				}
+
+				console.log(resultsValue);
+				document.getElementById("results").innerHTML = resultsValue;
+			}
+
+			function demonstrateAssociativeArray() {
+				var resultsValue = "Results by Associative Array or Hash: |" + document['getElementById']('AssociativeString').value;
+				resultsValue += "| <br/>Results by Element Accessor style: |";
+				resultsValue += document.getElementById('AssociativeString').value;
+				resultsValue += "|";
+
+				console.log(resultsValue);
+				document['getElementById']("results").innerHTML = resultsValue;
+			}
+
+		</script>
 		
 	</head>
 	<body>
@@ -33,8 +135,25 @@
 					<div class="col-md-12"><hr /></div>
 				</div>
                 <div class="col-md-12">
-
+					<label>Enter a String to Compare: </lable> <input id="StringA" type="text" value=""></input><br />
+					<label>Enter a String to Compare: </lable> <input id="StringB" type="text" value=""></input><br />
+					<button onclick="runIfConditional()">Run If Conditional</button><br /><br />
                 </div>
+                <div class="col-md-12">
+					<label>Enter a Number: </lable> <input id="NumberA" type="text" value=""></input><br />
+					<button onclick="runForConditional()">Run For Loop</button><br /><br />
+                </div>
+                <div class="col-md-12">
+					<label>Enter a Comma Seperated List: </lable> <input id="ParseArray" type="text" value=""></input><br />
+					<button onclick="displayArrayContents()">Parse String</button><br /><br />
+                </div>
+                <div class="col-md-12">
+					<label>Enter a String to Demonstrate Associate Array: </lable> <input id="AssociativeString" type="text" value=""></input><br />
+					<button onclick="demonstrateAssociativeArray()">Parse String</button><br /><br />
+                </div>
+				<div class="col-md-12">
+					<p id="results"></p>
+				</div>
             </div>
         </div>
 	</body>
