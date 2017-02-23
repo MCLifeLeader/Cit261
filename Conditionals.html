@@ -62,10 +62,13 @@
 			}
 
 			function runForConditional() {
+				var resultsValue = "";
+				// Setting a Variable
 				var stringCheck = document.getElementById('NumberA').value;
 
 				console.log(stringCheck);
 
+				// Checking to see if the variable is a number or not
 				if(!isNaN(stringCheck)) {
 					resultsValue = runLoop(stringCheck);
 				}

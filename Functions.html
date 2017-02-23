@@ -21,9 +21,43 @@
 		<script src="scripts/main.js"></script>
 
 		<script>
-		
+			// Instantiation of empObj with predefined data
+			var empObj ={
+						"employees":
+							[
+								{"firstName":"Michael", "lastName":"Carey"},
+								{"firstName":"John", "lastName":"Doe"}, 
+								{"firstName":"Anna", "lastName":"Smith"},
+								{"firstName":"Peter", "lastName":"Jones"}
+							]
+						};
+			function getEmployee() {
+				var resultsValue = "";
+			
+				// Setting a Variable
+				var stringCheck = document.getElementById('NumberA').value;
+
+				console.log(stringCheck);
+
+				// Checking to see if the variable is a number or not
+				if(!isNaN(stringCheck) ) {
+					if( (stringCheck - 1) < empObj.employees.length && (stringCheck - 1) >= 0) {
+						// Accessing the firstname property member in the employees array in the empObj
+						resultsValue = empObj.employees[stringCheck - 1].firstName + " " + empObj.employees[stringCheck - 1].lastName;	
+					}
+					else {
+						resultsValue = "Number out of array bounds. You Entered |" + stringCheck + "|";
+					}
+				}
+				else {
+					resultsValue = "You did not Enter a pure Integer. You Entered |" + stringCheck + "|";
+				}
+
+				console.log(resultsValue);
+				document.getElementById("results4").innerHTML = resultsValue;
+			}
 		</script>
-		
+
 	</head>
 	<body>
 		<div class="container body-content">
@@ -37,9 +71,58 @@
 					<div class="col-md-12"><hr /></div>
 				</div>
                 <div class="col-md-12">
-
+					<h3>Rectangle and Shape Inheritance objects and functions</h3>
+					<p id="results1"></p>
+					<p id="results2"></p>
+					<p id="results3"></p>
                 </div>
+                <div class="col-md-12">
+					<label>Enter a Number: </lable> <input id="NumberA" type="text" value=""></input><br />
+					<button onclick="getEmployee()">Run For Loop</button><br /><br />
+                </div>
+                <div class="col-md-12">
+					<h3>Properties</h3>
+					<p id="results4"></p>
+				</div>
             </div>
         </div>
 	</body>
+
+	<script>
+		/* Inheritance and Object Create with Methods and Instantiation */
+		/* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create */
+		// Shape - superclass
+		function Shape() {
+			this.x = 0;
+			this.y = 0;
+		}
+
+		// superclass method
+		Shape.prototype.move = function(x, y) {
+			this.x += x;
+			this.y += y;
+			console.info('Shape moved.');
+		};
+
+		// Rectangle - subclass
+		function Rectangle() {
+			Shape.call(this); // call super constructor.
+		}
+
+		// subclass extends superclass
+		Rectangle.prototype = Object.create(Shape.prototype);
+		Rectangle.prototype.constructor = Rectangle;
+
+		var rect = new Rectangle();
+
+		console.log('Is rect an instance of Rectangle?', rect instanceof Rectangle); // true
+		console.log('Is rect an instance of Shape?', rect instanceof Shape); // true
+
+		rect.move(1, 1); // Outputs, 'Shape moved.'
+		
+		/* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create */
+
+		document.getElementById("results1").innerHTML = "Is rect an instance of Rectangle? " + (rect instanceof Rectangle);
+		document.getElementById("results2").innerHTML = "Is rect an instance of Shape? " + (rect instanceof Shape);
+	</script>
 </html>
