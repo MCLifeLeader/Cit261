@@ -22,8 +22,8 @@
 
 		<script>
 			// Instantiation of empObj with predefined data
-			var empObj ={
-						"employees":
+			var empObj = {
+						 "employees":
 							[
 								{"firstName":"Michael", "lastName":"Carey"},
 								{"firstName":"John", "lastName":"Doe"}, 
@@ -31,6 +31,7 @@
 								{"firstName":"Peter", "lastName":"Jones"}
 							]
 						};
+
 			function getEmployee() {
 				var resultsValue = "";
 			
@@ -43,7 +44,8 @@
 				if(!isNaN(stringCheck) ) {
 					if( (stringCheck - 1) < empObj.employees.length && (stringCheck - 1) >= 0) {
 						// Accessing the firstname property member in the employees array in the empObj
-						resultsValue = empObj.employees[stringCheck - 1].firstName + " " + empObj.employees[stringCheck - 1].lastName;	
+						resultsValue = empObj.employees[stringCheck - 1].firstName + " " + empObj.employees[stringCheck - 1].lastName;
+						empObj.employees[stringCheck - 1].firstName = "Bob"
 					}
 					else {
 						resultsValue = "Number out of array bounds. You Entered |" + stringCheck + "|";
@@ -78,7 +80,7 @@
                 </div>
                 <div class="col-md-12">
 					<label>Enter a Number: </lable> <input id="NumberA" type="text" value=""></input><br />
-					<button onclick="getEmployee()">Run For Loop</button><br /><br />
+					<button onclick="getEmployee()">Get Employee</button><br /><br />
                 </div>
                 <div class="col-md-12">
 					<h3>Properties</h3>

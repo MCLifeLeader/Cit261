@@ -29,6 +29,7 @@
 
 			// General Window Event Listener
 			window.addEventListener("click", function() {
+				console.log("Did it work?");
 				document.getElementById("demo2").innerHTML = "Clicked";
 			});
 
@@ -38,6 +39,7 @@
 			});
 
 			// Mouse Event Listener
+			/* http://stackoverflow.com/questions/7790725/javascript-track-mouse-position */
 			(function() {
 				document.onmousemove = handleMouseMove;
 				function handleMouseMove(event) {
@@ -65,6 +67,8 @@
 					document.getElementById("demo3").innerHTML = "Pos: " + event.pageX + "," + event.pageY;
 				}
 			})();
+
+			/* http://stackoverflow.com/questions/7790725/javascript-track-mouse-position */
 
 			// onclick event to chagne text
 			function changeText() {

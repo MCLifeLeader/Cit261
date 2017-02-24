@@ -41,7 +41,9 @@
 					document.getElementById('StringB').value +
 					"| are not equal to";
 				}
+
 				resultsValue += " and ";
+				
 				if( document.getElementById('StringA').value === document.getElementById('StringB').value ) {
 					resultsValue += "|" + 
 					document.getElementById('StringA').value + 
@@ -102,8 +104,18 @@
 					var myArray = stringCheck.split(",");
 
 					for(var ii=0; ii<myArray.length; ii++) {
+						//myArray[ii] = 'a';
 						resultsValue += "|" + myArray[ii] + "|<br/>";
 					}
+					
+					// Assuming integer values for the array
+					//[4][4][4][4][4] (4 Byte Wide Elements) Total width in bytes = 20;
+					//[0][1][2][3][4] (5 Element Array)
+					//arr[0] = 1; (Assigning a Value to array element location)
+					//arr[1] = 2;
+					//arr[2] = 3;
+					//arr[3] = 4;
+					//arr[4] = 5;
 				}
 				else {
 					resultsValue = "You did not enter a comma seperated list.";
