@@ -33,7 +33,36 @@
 					<div class="col-md-12"><hr /></div>
 				</div>
                 <div class="col-md-12">
+					<canvas id="myCanvas"></canvas>
 
+					<script>
+						var canvas = document.getElementById("myCanvas");
+						var ctx = canvas.getContext("2d");
+						ctx.fillStyle = "#FF0000";
+						ctx.fillRect(0, 0, 80, 80);
+					</script>
+                </div>
+                <div class="col-md-12">
+					<audio controls>
+						<source src="content/audio.mp3" type="audio/mpeg">
+						Your browser does not support the audio tag.
+					</audio>
+                </div>
+                <div class="col-md-12">
+					<picture>
+						<source media="(min-width: 650px)" srcset="content/650Image.jpg">
+						<source media="(min-width: 465px)" srcset="content/465Image.jpg">
+						<img src="content/defaultImage.jpg" alt="Image Test" style="width:auto;">
+  					</picture>
+                </div>
+                <div class="col-md-12">
+					<embed src="content/shockwave.swf">
+                </div>
+                <div class="col-md-12">
+					<video width="320" height="240" controls>
+						<source src="content/video.mp4" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
                 </div>
             </div>
         </div>
