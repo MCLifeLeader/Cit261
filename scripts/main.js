@@ -40,25 +40,24 @@ function redirectUrl(curl)
 }
 
 // http://stackoverflow.com/questions/14446447/javascript-read-local-text-file
-function readTextContent(uncPath) 
+function readTextFile(file)
 {
+	var allText = "";
     var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", uncPath, true);
-
-    rawFile.onreadystatechange = function () 
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
     {
-        if(rawFile.readyState === 4 || rawFile.readyState === XMLHttpRequest.DONE)
+        if(rawFile.readyState === 4)
         {
             if(rawFile.status === 200 || rawFile.status == 0)
             {
-                return rawFile.responseText;
+                allText = rawFile.responseText;
             }
         }
     }
-
-    rawFile.send();
-
-	return null;
+    rawFile.send(null);
+	
+	return allText;
 }
 
 //http://stackoverflow.com/questions/3387427/remove-element-by-id

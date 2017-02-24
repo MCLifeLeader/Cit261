@@ -25,7 +25,7 @@
 			<div class="row">
                 <div class="col-md-12">
                     <h1>Michael Carey</h1>
-                    <h2>CIT 261 - XMLHTTPRequest</h2>
+                    <h2>CIT 261 - XMLHTTPRequest / AJAX</h2>
                     <a href="index.html">Home</a><br/><br/>
                 </div>
 				<div class="row">
@@ -43,84 +43,90 @@
                 </div>
             </div>
         </div>
-
-		<script type="text/javascript">
-			var companyListJson = "";
-			var companyList = "";
-
-			var loadData = function ()
-			{
-				var xhr = new XMLHttpRequest();
-				// Cross site calls not normally allowed in browser
-				xhr.open("GET", 'http://mbcarey.com/MLMLinkup/Api/ReturnCompanyList', true);
-				// Load from local development box
-				// xhr.open("GET", 'http://localhost/mlmlinkup/Api/ReturnCompanyList', true);
-				xhr.send(null);
-
-				xhr.onreadystatechange = function () {
-					if(xhr.readyState === 4 || xhr.readyState === XMLHttpRequest.DONE) {
-						if(xhr.status === 200 || xhr.status == 0) {
-							companyListJson = xhr.responseText;
-							companyList = JSON.parse(companyListJson);
-							useData();
-						}
-						else {
-							// Error
-						}
-					}
-				}
-			};
-
-			function useData()
-			{
-				var checkElement = document.getElementById("rawDataOut");
-
-				if( checkElement != null )
-				{
-					checkElement.remove();
-				}
-
-				var checkElement = document.getElementById("ImgDiv");
-				if( checkElement != null )
-				{
-					checkElement.remove();
-				}
-				// Image Div
-				var divNode = document.createElement("DIV");
-				divNode.id = "ImgDiv";
-				var element = document.getElementById("ajaxData");
-				element.appendChild(divNode);
-
-				// Data dump Div
-				divNode = document.createElement("DIV");
-				divNode.id = "rawDataOut";
-				var node = document.createTextNode("JSONData = " + companyListJson);
-				divNode.appendChild(node);
-
-				element = document.getElementById("ajaxData");
-				element.appendChild(divNode);
-			}
-
-			function getImage(id)
-			{
-				var imageItem = document.createElement("IMG");
-
-				// Items from the Array maynot be sorted. Match the Company Id to the correct Array Element.
-				for(var ii=0; ii<companyList.length; ii++)
-				{
-					if(companyList[ii].Id == id )
-					{
-						imageItem.width = JSON.stringify( companyList[ii].Width );
-						imageItem.height = JSON.stringify( companyList[ii].Height );
-						imageItem.src = 'http://mbcarey.com/MLMLinkup/Search/GetMlmCompanyLogo/' + companyList[ii].Id;
-
-						var element = document.getElementById("ImgDiv");
-						element.appendChild(imageItem);
-						break;
-					}
-				}
-			}
-
+		<!-- Begin Navbar Include -->
+		<div id="Footer"></div>
+		<script>
+			document.getElementById("Footer").innerHTML = readTextFile( "footer.html" );				
 		</script>
+		<!-- End Navbar Include -->
 	</body>
+
+	<script type="text/javascript">
+		var companyListJson = "";
+		var companyList = "";
+
+		var loadData = function ()
+		{
+			var xhr = new XMLHttpRequest();
+			// Cross site calls not normally allowed in browser
+			xhr.open("GET", 'http://mbcarey.com/MLMLinkup/Api/ReturnCompanyList', true);
+			// Load from local development box
+			// xhr.open("GET", 'http://localhost/mlmlinkup/Api/ReturnCompanyList', true);
+			xhr.send(null);
+
+			xhr.onreadystatechange = function () {
+				if(xhr.readyState === 4 || xhr.readyState === XMLHttpRequest.DONE) {
+					if(xhr.status === 200 || xhr.status == 0) {
+						companyListJson = xhr.responseText;
+						companyList = JSON.parse(companyListJson);
+						useData();
+					}
+					else {
+						// Error
+					}
+				}
+			}
+		};
+
+		function useData()
+		{
+			var checkElement = document.getElementById("rawDataOut");
+
+			if( checkElement != null )
+			{
+				checkElement.remove();
+			}
+
+			var checkElement = document.getElementById("ImgDiv");
+			if( checkElement != null )
+			{
+				checkElement.remove();
+			}
+			// Image Div
+			var divNode = document.createElement("DIV");
+			divNode.id = "ImgDiv";
+			var element = document.getElementById("ajaxData");
+			element.appendChild(divNode);
+
+			// Data dump Div
+			divNode = document.createElement("DIV");
+			divNode.id = "rawDataOut";
+			var node = document.createTextNode("JSONData = " + companyListJson);
+			divNode.appendChild(node);
+
+			element = document.getElementById("ajaxData");
+			element.appendChild(divNode);
+		}
+
+		function getImage(id)
+		{
+			var imageItem = document.createElement("IMG");
+
+			// Items from the Array maynot be sorted. Match the Company Id to the correct Array Element.
+			for(var ii=0; ii<companyList.length; ii++)
+			{
+				if(companyList[ii].Id == id )
+				{
+					imageItem.width = JSON.stringify( companyList[ii].Width );
+					imageItem.height = JSON.stringify( companyList[ii].Height );
+					imageItem.src = 'http://mbcarey.com/MLMLinkup/Search/GetMlmCompanyLogo/' + companyList[ii].Id;
+
+					var element = document.getElementById("ImgDiv");
+					element.appendChild(imageItem);
+					break;
+				}
+			}
+		}
+
+	</script>
 </html>

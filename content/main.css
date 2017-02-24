@@ -133,6 +133,11 @@ td, th {
 * {
     box-sizing: border-box;
 }
+.footer
+{
+	font-weight: bold;
+	font-size: larger;
+}
 .HomePageImage {
 	max-height: 160px;
 	max-width: 160px;
@@ -149,6 +154,24 @@ td, th {
 	background-color: red;
 	color: white;
 	font-weight: bold;
+}
+.incomplete
+{
+	font-size: larger;
+	font-weight: bold;
+	color: red;
+}
+.review
+{
+	font-size: larger;
+	font-weight: bold;
+	color: orange;
+}
+.complete
+{
+	font-size: larger;
+	font-weight: bold;
+	color: green;
 }
 /*
 div

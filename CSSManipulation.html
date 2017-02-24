@@ -20,6 +20,23 @@
 		<link rel="stylesheet" href="content/main.css" />
 		<script src="scripts/main.js"></script>
 		
+		<script>
+			function setStyleForResults() {
+				var styleKey = document.getElementById("StyleKey").value;
+				var styleValue = document.getElementById("StyleValue").value;
+
+				console.log(styleKey);
+				console.log(styleValue);
+
+				if(styleKey.length > 0 ) {
+					document.getElementById("results").style[styleKey] = styleValue;
+				}
+				else {
+					alert("Key Value is Required!");
+				}
+			}
+		</script>
+		
 	</head>
 	<body>
 		<div class="container body-content">
@@ -32,10 +49,32 @@
 				<div class="row">
 					<div class="col-md-12"><hr /></div>
 				</div>
+				<div>
+					<p>
+						Some Examples:<br/>
+						Style Key = 'background-color' &amp; Style Value = 'red'<br/>
+						Style Key = 'color' &amp; Style Value = 'white'<br/>
+						Style Key = 'font-weight' &amp; Style Value = 'bold'<br/>
+						Style Key = 'font-size' &amp; Style Value = 'larger' or '1.2em' or '12pt'<br/>
+					</p>
+				</div>
                 <div class="col-md-12">
-
+					<label>Style Key: </lable> <input id="StyleKey" type="text" value=""></input><br />
+					<label>Style Value: </lable> <input id="StyleValue" type="text" value=""></input><br />
+					<button onclick="setStyleForResults()">Set Style</button><br /><br />
+                </div>
+                <div class="col-md-12">
+					<p id="results">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a malesuada magna. In hac habitasse platea dictumst. Donec eu tincidunt dui, et pulvinar orci. Maecenas at magna elit. Duis sodales venenatis felis, ut maximus ipsum varius non. Integer fermentum tortor quis mi luctus aliquam. Maecenas est lacus, maximus dignissim mauris vel, lobortis semper tellus. Aliquam erat volutpat. Morbi in bibendum mi. Donec porta justo sagittis facilisis egestas.
+					</p>
                 </div>
             </div>
         </div>
+		<!-- Begin Navbar Include -->
+		<div id="Footer"></div>
+		<script>
+			document.getElementById("Footer").innerHTML = readTextFile( "footer.html" );				
+		</script>
+		<!-- End Navbar Include -->
 	</body>
 </html>
