@@ -19,6 +19,57 @@
 		
 		<link rel="stylesheet" href="content/main.css" />
 		<script src="scripts/main.js"></script>
+
+		<!-- 	
+			https://www.w3schools.com/js/js_htmldom_animate.asp 
+			https://www.w3schools.com/css/css3_animations.asp
+		 -->
+
+		<style>
+			#container1 
+			{
+				width: 300px;
+				height: 300px;
+				position: relative;
+				background: yellow;
+			}
+			#animate1 
+			{
+				width: 50px;
+				height: 50px;
+				position: absolute;
+				background: red;
+			}
+			/* The animation code */
+			@keyframes example 
+			{
+				0%   {background-color: red;}
+				25%  {background-color: yellow;}
+				50%  {background-color: blue;}
+				100% {background-color: green;}
+			}
+
+			/* The element to apply the animation to */
+			#animate2 
+			{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				animation-name: example;
+				animation-duration: 4s;
+			}
+			#animate3
+			{
+				width: 100px;
+				height: 100px;
+				position: relative;
+				background-color: red;
+				animation-name: example;
+				animation-duration: 4s;
+				animation-iteration-count: 3;
+				animation-direction: alternate;
+			}
+		</style>
 		
 	</head>
 	<body>
@@ -32,16 +83,48 @@
 				<div class="row">
 					<div class="col-md-12"><hr /></div>
 				</div>
-                <div class="col-md-12">
-
-                </div>
+				<div class="row">
+					<div class="col-md-4">
+						<div id="container1">
+							<div id="animate1">My animation will go here</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div id="container2">
+							<div id="animate2">My animation will go here</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div id="container3">
+							<div id="animate3">My animation will go here</div>
+						</div>
+					</div>
+				</div>
             </div>
         </div>
-		<!-- Begin Navbar Include -->
+		<!-- Begin Footer Include -->
 		<div id="Footer"></div>
 		<script>
 			document.getElementById("Footer").innerHTML = readTextFile( "footer.html" );				
 		</script>
-		<!-- End Navbar Include -->
+		<!-- End Footer Include -->
 	</body>
+
+	<script>
+		function myMove() {
+			var elem = document.getElementById("animate1");   
+			var pos = 0;
+			var id = setInterval(frame, 5);
+			function frame() {
+				if (pos == 250) {
+					clearInterval(id);
+				} else {
+					pos++;
+					elem.style.top = pos + 'px'; 
+					elem.style.left = pos + 'px';
+				}
+			}
+		}
+		myMove();
+	</script>
 </html>
