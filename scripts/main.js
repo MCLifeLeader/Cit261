@@ -52,12 +52,12 @@ function readTextFile(file)
             if(rawFile.status === 200 || rawFile.status == 0)
             {
                 allText = rawFile.responseText;
+            	return allText;
             }
         }
     }
+
     rawFile.send(null);
-	
-	return allText;
 }
 
 //http://stackoverflow.com/questions/3387427/remove-element-by-id
