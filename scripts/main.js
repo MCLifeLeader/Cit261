@@ -42,6 +42,7 @@ function redirectUrl(curl)
 // http://stackoverflow.com/questions/14446447/javascript-read-local-text-file
 function readTextFile(file)
 {
+    // See XMLHTTPRequest.html for AJAX + JSON request
 	var allText = "";
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
@@ -52,12 +53,17 @@ function readTextFile(file)
             if(rawFile.status === 200 || rawFile.status == 0)
             {
                 allText = rawFile.responseText;
-            	return allText;
+                // By placing my return statment here it breaks my footer and does not display on each page.
+                // return allText;
             }
         }
     }
 
+    // Moving this line up directly below the "open" call does not seem to help.
     rawFile.send(null);
+	
+    // I am not certain why I have to have my return here but this is where it works.
+	return allText;
 }
 
 //http://stackoverflow.com/questions/3387427/remove-element-by-id

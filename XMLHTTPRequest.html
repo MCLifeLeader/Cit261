@@ -58,10 +58,9 @@
 		var loadData = function ()
 		{
 			var xhr = new XMLHttpRequest();
-			// Cross site calls not normally allowed in browser
+			// Cross site calls not normally allowed in browser. 
+			// Modified web.config on mbcarey.com to allow CORS behavior
 			xhr.open("GET", 'http://mbcarey.com/MLMLinkup/Api/ReturnCompanyList', true);
-			// Load from local development box
-			// xhr.open("GET", 'http://localhost/mlmlinkup/Api/ReturnCompanyList', true);
 			xhr.send(null);
 
 			xhr.onreadystatechange = function () {
@@ -69,6 +68,7 @@
 					if(xhr.status === 200 || xhr.status == 0) {
 						companyListJson = xhr.responseText;
 						companyList = JSON.parse(companyListJson);
+						// This works as it should for an AJAX call
 						useData();
 					}
 					else {
@@ -78,6 +78,7 @@
 			}
 		};
 
+		// Populate the data into the DOM
 		function useData()
 		{
 			var checkElement = document.getElementById("rawDataOut");
