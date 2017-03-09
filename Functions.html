@@ -132,5 +132,26 @@
 
 		document.getElementById("results1").innerHTML = "Is rect an instance of Rectangle? " + (rect instanceof Rectangle);
 		document.getElementById("results2").innerHTML = "Is rect an instance of Shape? " + (rect instanceof Shape);
+
+		var address = {
+			street: "",
+			city: "",
+			state: "",
+			postalCode: "",
+
+			get getAddress() {
+				return street + "" + city + "" + state + "" + postalCode;
+			},
+
+			set setAddress(parseAddress) {
+				var parts = parseAddress.split(", ");
+				this.street = parts[0] || "";
+				this.city = parts[1] || "";
+				this.state = parts[2] || "";
+				this.postalCode = parts[3] || "";
+			}
+		}
+		address.setAddress = "";
+		document.write(address.getAddress);
 	</script>
 </html>
