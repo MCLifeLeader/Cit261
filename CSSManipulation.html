@@ -2,306 +2,305 @@
 <html lang="en">
 
 <head>
-	<title>CSS Manipulation</title>
+    <title>CSS Manipulation</title>
 
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta http-equiv="Content-Language" content="en-us" />
-	<meta name="Robots" content="Follow, Index" />
-	<meta name="Distribution" content="Worldwide" />
-	<meta name="Rating" content="General" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Language" content="en-us" />
+    <meta name="Robots" content="Follow, Index" />
+    <meta name="Distribution" content="Worldwide" />
+    <meta name="Rating" content="General" />
 
-	<meta name="DESCRIPTION" content="Manipulating CSS Class Properties Using JavaScript" />
-	<meta name="KEYWORDS" content="CIT 261, BYU-Idaho" />
-	<meta name="Author" content="Michael Carey" />
-	<meta name="School" content="BYU-Idaho" />
+    <meta name="DESCRIPTION" content="Manipulating CSS Class Properties Using JavaScript" />
+    <meta name="KEYWORDS" content="CIT 261, BYU-Idaho" />
+    <meta name="Author" content="Michael Carey" />
+    <meta name="School" content="BYU-Idaho" />
 
-	<link rel="stylesheet" href="content/main.css" />
-	<script src="scripts/main.js"></script>
+    <link rel="stylesheet" href="content/main.css" />
+    <script src="scripts/main.js"></script>
 
-	<style>
-		.mySlides {
-			max-width: 480px;
-			max-height: 480px;
-			display: none;
-			margin: auto;
-		}
-		
-		.myImage {
-			max-width: 480px;
-			max-height: 480px;
-			margin: auto;
-		}
-		/* https://www.w3schools.com/howto/howto_js_slideshow.asp */
-		
-		* {
-			box-sizing: border-box
-		}
-		/* Slideshow container */
-		
-		.slideshow-container {
-			max-width: 1000px;
-			min-height: 200px;
-			position: relative;
-			margin: auto;
-		}
-		/* Next & previous buttons */
-		
-		.prev,
-		.next {
-			cursor: pointer;
-			bottom: 50%;
-			width: auto;
-			margin-top: 100px;
-			padding: 16px;
-			color: white;
-			font-weight: bold;
-			font-size: 18px;
-			transition: 0.6s ease;
-			border-radius: 0 3px 3px 0;
-			float: left;
-		}
-		/* Position the "next button" to the right */
-		
-		.next {
-			right: 0;
-			border-radius: 3px 0 0 3px;
-			float: right;
-		}
-		/* On hover, add a black background color with a little bit see-through */
-		
-		.prev:hover,
-		.next:hover {
-			background-color: rgba(0, 0, 0, 0.8);
-		}
-		/* Caption text */
-		
-		.text {
-			color: orangered;
-			font-size: 18pt;
-			font-weight: bold;
-			padding: 8px 12px;
-			bottom: 8px;
-			width: 100%;
-			text-align: left;
-			margin-top: -55px;
-			top: 100px;
-		}
-		/* The dots/bullets/indicators */
-		
-		.dot {
-			cursor: pointer;
-			height: 13px;
-			width: 13px;
-			margin: 0 2px;
-			background-color: #bbb;
-			border-radius: 50%;
-			display: inline-block;
-			transition: background-color 0.6s ease;
-		}
-		
-		.active,
-		.dot:hover {
-			background-color: #717171;
-		}
-		/* Fading animation */
-		
-		.fade {
-			-webkit-animation-name: fade;
-			-webkit-animation-duration: 1.5s;
-			animation-name: fade;
-			animation-duration: 1.5s;
-		}
-		
-		@-webkit-keyframes fade {
-			from {
-				opacity: .4
-			}
-			to {
-				opacity: 1
-			}
-		}
-		
-		@keyframes fade {
-			from {
-				opacity: .4
-			}
-			to {
-				opacity: 1
-			}
-		}
-	</style>
+    <style>
+        .mySlides {
+            max-width: 480px;
+            max-height: 480px;
+            display: none;
+            margin: auto;
+        }
+        
+        .myImage {
+            max-width: 480px;
+            max-height: 480px;
+            margin: auto;
+        }
+        /* https://www.w3schools.com/howto/howto_js_slideshow.asp */
+        
+        * {
+            box-sizing: border-box
+        }
+        /* Slideshow container */
+        
+        .slideshow-container {
+            max-width: 1000px;
+            min-height: 200px;
+            position: relative;
+            margin: auto;
+        }
+        /* Next & previous buttons */
+        
+        .prev,
+        .next {
+            cursor: pointer;
+            bottom: 50%;
+            width: auto;
+            margin-top: 100px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            float: left;
+        }
+        /* Position the "next button" to the right */
+        
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+            float: right;
+        }
+        /* On hover, add a black background color with a little bit see-through */
+        
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        /* Caption text */
+        
+        .text {
+            color: orangered;
+            font-size: 18pt;
+            font-weight: bold;
+            padding: 8px 12px;
+            bottom: 8px;
+            width: 100%;
+            text-align: left;
+            margin-top: -55px;
+            top: 100px;
+        }
+        /* The dots/bullets/indicators */
+        
+        .dot {
+            cursor: pointer;
+            height: 13px;
+            width: 13px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        
+        .active,
+        .dot:hover {
+            background-color: #717171;
+        }
+        /* Fading animation */
+        
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        
+        @-webkit-keyframes fade {
+            from {
+                opacity: .4
+            }
+            to {
+                opacity: 1
+            }
+        }
+        
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+            to {
+                opacity: 1
+            }
+        }
+    </style>
 
-	<script>
-		function setStyleForResults() {
-			var styleKey = document.getElementById("StyleKey").value;
-			var styleValue = document.getElementById("StyleValue").value;
+    <script>
+        function setStyleForResults() {
+            var styleKey = document.getElementById("StyleKey").value;
+            var styleValue = document.getElementById("StyleValue").value;
 
-			console.log(styleKey);
-			console.log(styleValue);
+            console.log(styleKey);
+            console.log(styleValue);
 
-			if (styleKey.length > 0) {
-				document.getElementById("results").style[styleKey] = styleValue;
-			}
-			else {
-				alert("Key Value is Required!");
-			}
-		}
-	</script>
+            if (styleKey.length > 0) {
+                document.getElementById("results").style[styleKey] = styleValue;
+            } else {
+                alert("Key Value is Required!");
+            }
+        }
+    </script>
 
 </head>
 
 <body>
-	<div class="container body-content">
-		<div class="row">
-			<div class="col-md-12">
-				<h1>Michael Carey</h1>
-				<h2>CIT 261 - CSS Manipulation</h2>
-				<a href="index.html">Home</a><br/><br/>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<hr />
-				</div>
-			</div>
-			<div>
-				<p>Use this form to manually manipulate your CSS properties using JavaScript.</p>
-				<p>
-					Some Examples:<br/> Style Key = 'background-color' &amp; Style Value = 'red'<br/> Style Key = 'color' &amp; Style Value
-					= 'white'<br/> Style Key = 'font-weight' &amp; Style Value = 'bold'<br/> Style Key = 'font-size' &amp; Style Value =
-					'larger' or '1.2em' or '12pt'<br/>
-				</p>
-			</div>
-			<div class="col-md-12">
-				<label>Style Key: </lable> <input id="StyleKey" type="text" value=""></input><br />
-					<label>Style Value: </lable> <input id="StyleValue" type="text" value=""></input><br />
-					<button onclick="setStyleForResults()">Set Style</button><br /><br />
-                </div>
-                <div class="col-md-12">
-					<p id="results">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a malesuada magna. In hac habitasse platea dictumst. Donec eu tincidunt dui, et pulvinar orci. Maecenas at magna elit. Duis sodales venenatis felis, ut maximus ipsum varius non. Integer fermentum tortor quis mi luctus aliquam. Maecenas est lacus, maximus dignissim mauris vel, lobortis semper tellus. Aliquam erat volutpat. Morbi in bibendum mi. Donec porta justo sagittis facilisis egestas.
-					</p>
-                </div>
-
-
-				<div class="slideshow-container">
-					<h2>Michael and Nicole Selected Pictures</h2>
-					<p>A few pictures from Michael and Nicole's history.</p>
-					</div>
-
-					<div class="container">
-
-					<button class="prev" onclick="plusDivs(-1)">&#10094;</button>
-					<button class="next" onclick="plusDivs(1)">&#10095;</button>
-
-						<div class="mySlides fade">
-							<img class="myImage" src="content/Michael_Nicole_01.jpg">
-							<div class="text">
-								Engagement November 2009
-							</div>
-						</div>
-
-						<div class="mySlides fade">
-							<img class="myImage" src="content/Michael_Nicole_02.jpg">
-							<div class="text">
-								Engagement November 2009
-							</div>
-						</div>
-
-						<div class="mySlides fade">
-							<img class="myImage" src="content/Michael_Nicole_03.jpg">
-							<div class="text">
-								Proposal Disneyland December 2009
-							</div>
-						</div>
-
-						<div class="mySlides fade">
-							<img class="myImage" src="content/Michael_Nicole_04.jpg">
-							<div class="text">
-								Proposal Disneyland December 2009
-							</div>
-						</div>
-
-						<div class="mySlides fade">
-							<img class="myImage" src="content/Michael_Nicole_05.jpg">
-							<div class="text">
-								Proposal Disneyland December 2009
-							</div>
-						</div>
-
-						<div class="mySlides fade">
-							<img class="myImage" src="content/Michael_Nicole_06.jpg">
-							<div class="text">
-								Wedding January 2010
-							</div>
-						</div>
-
-						<div class="mySlides fade">
-							<img class="myImage" src="content/Michael_Nicole_07.jpg">
-							<div class="text">
-								Wedding January 2010
-							</div>
-						</div>
-
-						<div class="mySlides fade">
-							<img class="myImage" src="content/Michael_Nicole_08.jpg">
-							<div class="text">
-								Wedding January 2010
-							</div>
-						</div>
-
-						<div class="mySlides fade">
-							<img class="myImage" src="content/Michael_Nicole_09.jpg">
-							<div class="text">
-								Sealing March 2011
-							</div>
-						</div>
-
-						<div class="mySlides fade">
-							<img class="myImage" src="content/Michael_Nicole_10.jpg">
-							<div class="text">
-								Sealing March 2011
-							</div>
-						</div>
-
-					</div>
-				</div>
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Michael Carey</h1>
+                <h2>CIT 261 - CSS Manipulation</h2>
+                <a href="index.html">Home</a><br/><br/>
             </div>
         </div>
-				<script>
-								   // https://www.w3schools.com/w3css/w3css_slideshow.asp
+        <div class="row">
+            <div class="col-md-12">
+                <hr />
+                <div>
+                    <p>Use this form to manually manipulate your CSS properties using JavaScript.</p>
+                    <p>
+                        Some Examples:<br/> Style Key = 'background-color' &amp; Style Value = 'red'<br/> Style Key = 'color' &amp; Style Value = 'white'<br/> Style Key = 'font-weight' &amp; Style Value = 'bold'<br/> Style Key = 'font-size' &amp; Style
+                        Value = 'larger' or '1.2em' or '12pt'<br/>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label>Style Key: </label> <input id="StyleKey" type="text" value=""></input><br />
+                <label>Style Value: </label> <input id="StyleValue" type="text" value=""></input><br />
+                <button onclick="setStyleForResults()">Set Style</button><br /><br />
+            </div>
+            <div class="col-md-12">
+                <p id="results">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a malesuada magna. In hac habitasse platea dictumst. Donec eu tincidunt dui, et pulvinar orci. Maecenas at magna elit. Duis sodales venenatis felis, ut maximus ipsum varius non. Integer fermentum
+                    tortor quis mi luctus aliquam. Maecenas est lacus, maximus dignissim mauris vel, lobortis semper tellus. Aliquam erat volutpat. Morbi in bibendum mi. Donec porta justo sagittis facilisis egestas.
+                </p>
+            </div>
+        </div>
 
-								   function plusDivs(n) {
-									   showDivs(slideIndex += n);
-								   }
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Michael and Nicole Selected Pictures</h2>
+                <p>A few pictures from Michael and Nicole's history.</p>
 
-								   function showDivs(n) {
-									   var i;
-									   var x = document.getElementsByClassName("mySlides");
+                <button class="prev" onclick="plusDivs(-1)">&#10094;</button>
+                <button class="next" onclick="plusDivs(1)">&#10095;</button>
 
-									   if (n > x.length) {
-										   slideIndex = 1
-									   }
-									   if (n < 1) {
-										   slideIndex = x.length
-									   }
+                <div class="mySlides fade">
+                    <img class="myImage" src="content/Michael_Nicole_01.jpg">
+                    <div class="text">
+                        Engagement November 2009
+                    </div>
+                </div>
 
-									   for (i = 0; i < x.length; i++) {
-										   x[i].style.display = "none";
-									   }
-									   x[slideIndex - 1].style.display = "block";
-								   }
+                <div class="mySlides fade">
+                    <img class="myImage" src="content/Michael_Nicole_02.jpg">
+                    <div class="text">
+                        Engagement November 2009
+                    </div>
+                </div>
 
-								   var slideIndex = 1;
-								   showDivs(slideIndex);
-				</script>
-		<!-- Begin Footer Include -->
-		<div id="Footer"></div>
-		<script>
-								   document.getElementById("Footer").innerHTML = readTextFile("footer.html");				
-		</script>
-		<!-- End Footer Include -->
-	</body>
+                <div class="mySlides fade">
+                    <img class="myImage" src="content/Michael_Nicole_03.jpg">
+                    <div class="text">
+                        Proposal Disneyland December 2009
+                    </div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img class="myImage" src="content/Michael_Nicole_04.jpg">
+                    <div class="text">
+                        Proposal Disneyland December 2009
+                    </div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img class="myImage" src="content/Michael_Nicole_05.jpg">
+                    <div class="text">
+                        Proposal Disneyland December 2009
+                    </div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img class="myImage" src="content/Michael_Nicole_06.jpg">
+                    <div class="text">
+                        Wedding January 2010
+                    </div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img class="myImage" src="content/Michael_Nicole_07.jpg">
+                    <div class="text">
+                        Wedding January 2010
+                    </div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img class="myImage" src="content/Michael_Nicole_08.jpg">
+                    <div class="text">
+                        Wedding January 2010
+                    </div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img class="myImage" src="content/Michael_Nicole_09.jpg">
+                    <div class="text">
+                        Sealing March 2011
+                    </div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img class="myImage" src="content/Michael_Nicole_10.jpg">
+                    <div class="text">
+                        Sealing March 2011
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // https://www.w3schools.com/w3css/w3css_slideshow.asp
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+
+            if (n > x.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = x.length
+            }
+
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex - 1].style.display = "block";
+        }
+
+        var slideIndex = 1;
+        showDivs(slideIndex);
+    </script>
+    <!-- Begin Footer Include -->
+    <div id="Footer"></div>
+    <script>
+        document.getElementById("Footer").innerHTML = readTextFile("footer.html");
+    </script>
+    <!-- End Footer Include -->
+</body>
+
 </html>
