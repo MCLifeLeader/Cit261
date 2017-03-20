@@ -19,6 +19,13 @@
 		
 		<link rel="stylesheet" href="content/main.css" />
 		<script src="scripts/main.js"></script>
+
+		<style>
+			.mySlides {
+				max-width: 480px;
+				max-height: 480px;
+			}
+		</style>
 		
 		<script>
 			function setStyleForResults() {
@@ -69,6 +76,117 @@
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a malesuada magna. In hac habitasse platea dictumst. Donec eu tincidunt dui, et pulvinar orci. Maecenas at magna elit. Duis sodales venenatis felis, ut maximus ipsum varius non. Integer fermentum tortor quis mi luctus aliquam. Maecenas est lacus, maximus dignissim mauris vel, lobortis semper tellus. Aliquam erat volutpat. Morbi in bibendum mi. Donec porta justo sagittis facilisis egestas.
 					</p>
                 </div>
+
+
+				<div class="container">
+					<h2>Slideshow Caption</h2>
+					<p>Add a caption text for each image slide with the w3-display-* classes (topleft, topmiddle, topright, bottomleft, bottommiddle, bottomright or middle).</p>
+					</div>
+
+					<div class="container">
+
+						<div class="mySlides">
+							<img src="content/Michael_Nicole_01.jpg">
+							<div class="">
+								Michael and Nicole Engagement Photo's November 2009
+							</div>
+						</div>
+
+						<div class="mySlides">
+							<img src="content/Michael_Nicole_02.jpg">
+							<div class="">
+								Michael and Nicole Engagement Photo's November 2009
+							</div>
+						</div>
+
+						<div class="mySlides">
+							<img src="content/Michael_Nicole_03.jpg">
+							<div class="">
+								Michael and Nicole Proposal at Disneyland Lilly Belle December 2009
+							</div>
+						</div>
+
+						<div class="mySlides">
+							<img src="content/Michael_Nicole_04.jpg">
+							<div class="">
+								Michael and Nicole Proposal at Disneyland Lilly Belle December 2009
+							</div>
+						</div>
+
+						<div class="mySlides">
+							<img src="content/Michael_Nicole_05.jpg">
+							<div class="">
+								Michael and Nicole Proposal at Disneyland Lilly Belle December 2009
+							</div>
+						</div>
+
+						<div class="mySlides">
+							<img src="content/Michael_Nicole_06.jpg">
+							<div class="">
+								Michael and Nicole Wedding January 2010
+							</div>
+						</div>
+
+						<div class="mySlides">
+							<img src="content/Michael_Nicole_07.jpg">
+							<div class="">
+								Michael and Nicole Wedding January 2010
+							</div>
+						</div>
+
+						<div class="mySlides">
+							<img src="content/Michael_Nicole_08.jpg">
+							<div class="">
+								Michael and Nicole Wedding January 2010
+							</div>
+						</div>
+
+						<div class="mySlides">
+							<img src="content/Michael_Nicole_09.jpg">
+							<div class="">
+								Michael and Nicole Sealing March 2011
+							</div>
+						</div>
+
+						<div class="mySlides">
+							<img src="content/Michael_Nicole_10.jpg">
+							<div class="">
+								Michael and Nicole Sealing March 2011
+							</div>
+						</div>
+
+					</div>
+
+					<button class="" onclick="plusDivs(-1)">&#10094;</button>
+					<button class="" onclick="plusDivs(1)">&#10095;</button>
+
+				<script>
+					// https://www.w3schools.com/w3css/w3css_slideshow.asp
+					var slideIndex = 1;
+					showDivs(slideIndex);
+
+					function plusDivs(n) {
+						showDivs(slideIndex += n);
+					}
+
+					function showDivs(n) {
+						var i;
+						var x = document.getElementsByClassName("mySlides");
+					
+						if (n > x.length) {
+							slideIndex = 1
+						}    
+						if (n < 1) {
+							slideIndex = x.length
+						}
+				
+						for (i = 0; i < x.length; i++) {
+							x[i].style.display = "none";  
+						}
+						x[slideIndex-1].style.display = "block";  
+					}	
+					</script>
+				</div>
             </div>
         </div>
 		<!-- Begin Footer Include -->
