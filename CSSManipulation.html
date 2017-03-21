@@ -132,6 +132,29 @@
                 opacity: 1
             }
         }
+        
+        .h2Style {
+            position: relative;
+            display: inline-block;
+            padding-right: 10px;
+            font-size: 24pt;
+            -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(50%, rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, 1)));
+        }
+        
+        .h2Style span {
+            text-decoration: none;
+            color: #1E4D8C;
+            position: absolute;
+            -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(50%, rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, 1)));
+            font-size: 24pt;
+        }
+        
+        .h2Style:after {
+            content: 'Michael and Nicole Selected Pictures';
+            color: #d6d6d6;
+            text-shadow: 1px 2px 5px #000;
+            font-size: 24pt;
+        }
     </style>
 
     <script>
@@ -167,8 +190,9 @@
                 <div>
                     <p>Use this form to manually manipulate your CSS properties using JavaScript.</p>
                     <p>
-                        Some Examples:<br/> Style Key = 'background-color' &amp; Style Value = 'red'<br/> Style Key = 'color' &amp; Style Value = 'white'<br/> Style Key = 'font-weight' &amp; Style Value = 'bold'<br/> Style Key = 'font-size' &amp; Style
-                        Value = 'larger' or '1.2em' or '12pt'<br/>
+                        Some Examples:<br/> Style Key = 'background-color' &amp; Style Value = 'red'<br/> Style Key = 'color'
+                        &amp; Style Value = 'white'<br/> Style Key = 'font-weight' &amp; Style Value = 'bold'<br/> Style
+                        Key = 'font-size' &amp; Style Value = 'larger' or '1.2em' or '12pt'<br/>
                     </p>
                 </div>
             </div>
@@ -181,15 +205,18 @@
             </div>
             <div class="col-md-12">
                 <p id="results">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a malesuada magna. In hac habitasse platea dictumst. Donec eu tincidunt dui, et pulvinar orci. Maecenas at magna elit. Duis sodales venenatis felis, ut maximus ipsum varius non. Integer fermentum
-                    tortor quis mi luctus aliquam. Maecenas est lacus, maximus dignissim mauris vel, lobortis semper tellus. Aliquam erat volutpat. Morbi in bibendum mi. Donec porta justo sagittis facilisis egestas.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a malesuada magna. In hac habitasse platea dictumst. Donec eu
+                    tincidunt dui, et pulvinar orci. Maecenas at magna elit. Duis sodales venenatis felis, ut maximus ipsum
+                    varius non. Integer fermentum tortor quis mi luctus aliquam. Maecenas est lacus, maximus dignissim mauris
+                    vel, lobortis semper tellus. Aliquam erat volutpat. Morbi in bibendum mi. Donec porta justo sagittis
+                    facilisis egestas.
                 </p>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <h2>Michael and Nicole Selected Pictures</h2>
+                <h2 class="h2Style"><span>Michael and Nicole Selected Pictures</span></h2>
                 <p>A few pictures from Michael and Nicole's history.</p>
 
                 <button class="prev" onclick="plusDivs(-1)">&#10094;</button>
@@ -269,36 +296,36 @@
     </div>
 
     <script>
-        // https://www.w3schools.com/w3css/w3css_slideshow.asp
+                                              // https://www.w3schools.com/w3css/w3css_slideshow.asp
 
-        function plusDivs(n) {
-            showDivs(slideIndex += n);
-        }
+                                              function plusDivs(n) {
+                                                  showDivs(slideIndex += n);
+                                              }
 
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
+                                              function showDivs(n) {
+                                                  var i;
+                                                  var x = document.getElementsByClassName("mySlides");
 
-            if (n > x.length) {
-                slideIndex = 1
-            }
-            if (n < 1) {
-                slideIndex = x.length
-            }
+                                                  if (n > x.length) {
+                                                      slideIndex = 1
+                                                  }
+                                                  if (n < 1) {
+                                                      slideIndex = x.length
+                                                  }
 
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            x[slideIndex - 1].style.display = "block";
-        }
+                                                  for (i = 0; i < x.length; i++) {
+                                                      x[i].style.display = "none";
+                                                  }
+                                                  x[slideIndex - 1].style.display = "block";
+                                              }
 
-        var slideIndex = 1;
-        showDivs(slideIndex);
+                                              var slideIndex = 1;
+                                              showDivs(slideIndex);
     </script>
     <!-- Begin Footer Include -->
     <div id="Footer"></div>
     <script>
-        document.getElementById("Footer").innerHTML = readTextFile("footer.html");
+                                              document.getElementById("Footer").innerHTML = readTextFile("footer.html");
     </script>
     <!-- End Footer Include -->
 </body>
