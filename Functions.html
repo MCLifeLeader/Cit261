@@ -1,100 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Functions</title>
 
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta http-equiv="Content-Language" content="en-us" />
-		<meta name="Robots" content="Follow, Index" />
-		<meta name="Distribution" content="Worldwide" />
-		<meta name="Rating" content="General" />
+<head>
+	<title>Functions</title>
 
-		<meta name="DESCRIPTION" content="Object Creation Functions, Inheritance, Properties, Methods, Instantiation" />
-		<meta name="KEYWORDS" content="CIT 261, BYU-Idaho" />
-		<meta name="Author" content="Michael Carey" />
-		<meta name="School" content="BYU-Idaho" />
-		
-		<link rel="stylesheet" href="content/main.css" />
-		<script src="scripts/main.js"></script>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-Language" content="en-us" />
+	<meta name="Robots" content="Follow, Index" />
+	<meta name="Distribution" content="Worldwide" />
+	<meta name="Rating" content="General" />
 
-		<script>
-			// Instantiation of empObj with predefined data
-			var empObj = {
-						 "employees":
-							[
-								{"firstName":"Michael", "lastName":"Carey"},
-								{"firstName":"John", "lastName":"Doe"}, 
-								{"firstName":"Anna", "lastName":"Smith"},
-								{"firstName":"Peter", "lastName":"Jones"}
-							]
-						};
+	<meta name="DESCRIPTION" content="Object Creation Functions, Inheritance, Properties, Methods, Instantiation" />
+	<meta name="KEYWORDS" content="CIT 261, BYU-Idaho" />
+	<meta name="Author" content="Michael Carey" />
+	<meta name="School" content="BYU-Idaho" />
 
-			function getEmployee() {
-				var resultsValue = "";
-			
-				// Setting a Variable
-				var stringCheck = document.getElementById('NumberA').value;
+	<link rel="stylesheet" href="content/main.css" />
+	<script src="scripts/main.js"></script>
 
-				console.log(stringCheck);
+	<script>
+		// Instantiation of empObj with predefined data
+		var empObj = {
+			"employees":
+				[
+					{ "firstName": "Michael", "lastName": "Carey" },
+					{ "firstName": "John", "lastName": "Doe" },
+					{ "firstName": "Anna", "lastName": "Smith" },
+					{ "firstName": "Peter", "lastName": "Jones" }
+				]
+		};
 
-				// Checking to see if the variable is a number or not
-				if(!isNaN(stringCheck) ) {
-					if( (stringCheck - 1) < empObj.employees.length && (stringCheck - 1) >= 0) {
-						// Accessing the firstname property member in the employees array in the empObj
-						resultsValue = empObj.employees[stringCheck - 1].firstName + " " + empObj.employees[stringCheck - 1].lastName;
-						empObj.employees[stringCheck - 1].firstName = "Bob"
-					}
-					else {
-						resultsValue = "Number out of array bounds. You Entered |" + stringCheck + "|";
-					}
+		function getEmployee() {
+			var resultsValue = "";
+
+			// Setting a Variable
+			var stringCheck = document.getElementById('NumberA').value;
+
+			console.log(stringCheck);
+
+			// Checking to see if the variable is a number or not
+			if (!isNaN(stringCheck)) {
+				if ((stringCheck - 1) < empObj.employees.length && (stringCheck - 1) >= 0) {
+					// Accessing the firstname property member in the employees array in the empObj
+					resultsValue = empObj.employees[stringCheck - 1].firstName + " " + empObj.employees[stringCheck - 1].lastName;
+					empObj.employees[stringCheck - 1].firstName = "Bob"
 				}
 				else {
-					resultsValue = "You did not Enter a pure Integer. You Entered |" + stringCheck + "|";
+					resultsValue = "Number out of array bounds. You Entered |" + stringCheck + "|";
 				}
-
-				console.log(resultsValue);
-				document.getElementById("results4").innerHTML = resultsValue;
 			}
-		</script>
+			else {
+				resultsValue = "You did not Enter a pure Integer. You Entered |" + stringCheck + "|";
+			}
 
-	</head>
-	<body>
-		<div class="container body-content">
+			console.log(resultsValue);
+			document.getElementById("results4").innerHTML = resultsValue;
+		}
+	</script>
+
+</head>
+
+<body>
+	<div class="container body-content">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Michael Carey</h1>
+				<h2>CIT 261 - Functions</h2>
+				<a href="index.html">Home</a><br /><br />
+			</div>
 			<div class="row">
-                <div class="col-md-12">
-                    <h1>Michael Carey</h1>
-                    <h2>CIT 261 - Functions</h2>
-                    <a href="index.html">Home</a><br/><br/>
-                </div>
-				<div class="row">
-					<div class="col-md-12"><hr /></div>
+				<div class="col-md-12">
+					<hr />
 				</div>
-                <div class="col-md-12">
-					<h3>Rectangle and Shape Inheritance objects and functions</h3>
-					<p id="results1"></p>
-					<p id="results2"></p>
-					<p id="results3"></p>
-                </div>
-                <div class="col-md-12">
-					<label>Enter a Number: </lable> <input id="NumberA" type="text" value=""></input><br />
+			</div>
+			<div class="col-md-12">
+				<h3>Rectangle and Shape Inheritance objects and functions</h3>
+				<p id="results1"></p>
+				<p id="results2"></p>
+				<p id="results3"></p>
+			</div>
+			<div class="col-md-12">
+				<label>Enter a Number: </lable> <input id="NumberA" type="text" value=""></input><br />
 					<button onclick="getEmployee()">Get Employee</button><br /><br />
-                </div>
-                <div class="col-md-12">
-					<h3>Properties</h3>
-					<p id="results4"></p>
-				</div>
-            </div>
-        </div>
-		<!-- Begin Footer Include -->
-		<div id="Footer"></div>
-		<script>
-			document.getElementById("Footer").innerHTML = readTextFile( "footer.html" );				
-		</script>
-		<!-- End Footer Include -->
-	</body>
+			</div>
+			<div class="col-md-12">
+				<h3>Properties</h3>
+				<p id="results4"></p>
+			</div>
+		</div>
+	</div>
+	<!-- Begin Footer Include -->
+	<div id="Footer"></div>
+	<script>
+		document.getElementById("Footer").innerHTML = readTextFile("footer.html");				
+	</script>
+	<!-- End Footer Include -->
 
 	<script>
 		/* Inheritance and Object Create with Methods and Instantiation */
@@ -106,7 +109,7 @@
 		}
 
 		// superclass method
-		Shape.prototype.move = function(x, y) {
+		Shape.prototype.move = function (x, y) {
 			this.x += x;
 			this.y += y;
 			console.info('Shape moved.');
@@ -127,7 +130,7 @@
 		console.log('Is rect an instance of Shape?', rect instanceof Shape); // true
 
 		rect.move(1, 1); // Outputs, 'Shape moved.'
-		
+
 		/* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create */
 
 		document.getElementById("results1").innerHTML = "Is rect an instance of Rectangle? " + (rect instanceof Rectangle);
@@ -154,4 +157,6 @@
 		address.setAddress = "";
 		document.write(address.getAddress);
 	</script>
+</body>
+
 </html>

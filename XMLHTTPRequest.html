@@ -32,8 +32,8 @@
 					<div class="col-md-12"><hr /></div>
 				</div>
                 <div class="col-md-12">
-					<a href="http://mbcarey.com/MLMLinkup/Api/ReturnCompanyList" target="_blank">ReturnCompanyList</a>
-					<a href="http://mbcarey.com/MLMLinkup/Search/GetMlmCompanyLogo/3" target="_blank">GetMlmCompanyLogo</a>
+					<a href="https://mlmlinkup.com/Api/ReturnCompanyList" target="_blank">ReturnCompanyList</a>
+					<a href="https://mlmlinkup.com/Search/GetMlmCompanyLogo/3" target="_blank">GetMlmCompanyLogo</a>
                 </div>
                 <div id="ajaxData" class="col-md-12">
 					<label>Click Twice to Load Data: </lable> <button onclick="loadData()">Load Data</button><br /><br />
@@ -60,7 +60,7 @@
 			var xhr = new XMLHttpRequest();
 			// Cross site calls not normally allowed in browser. 
 			// Modified web.config on mbcarey.com to allow CORS behavior
-			xhr.open("GET", 'http://mbcarey.com/MLMLinkup/Api/ReturnCompanyList', true);
+			xhr.open("GET", 'https://mlmlinkup.com/Api/ReturnCompanyList', true);
 			xhr.send(null);
 
 			xhr.onreadystatechange = function () {
@@ -120,7 +120,10 @@
 				{
 					imageItem.width = JSON.stringify( companyList[ii].Width );
 					imageItem.height = JSON.stringify( companyList[ii].Height );
-					imageItem.src = 'http://mbcarey.com/MLMLinkup/Search/GetMlmCompanyLogo/' + companyList[ii].Id;
+					imageItem.src = 'https://mlmlinkup.com/Search/GetMlmCompanyLogo/' + companyList[ii].Id;
+
+					console.log(companyList[ii].Id)
+					console.log(imageItem.src)
 
 					var element = document.getElementById("ImgDiv");
 					element.appendChild(imageItem);
