@@ -43,64 +43,61 @@
             <h2>This example leverages jQuery</h2>
 
             <label>Find music on iTunes by Artist</label><br />
-            <label>Enter an Artist's Name</label> <input id="artistNameId" type="text" value=""></input><br />
+            <label>Enter an Artist's Name: </label> <input id="artistNameId" type="text" value="" /><br />
             <button onclick="findArtist();">Search</button><br /><br />
-            <div id="RenderArtistsId" class="row">
-               <div class="col-md-3">
-                  <img src="https://is3-ssl.mzstatic.com/image/thumb/Music60/v4/f3/0c/e8/f30ce8c3-c5f7-2122-ea4a-0f6dcd939618/source/250x250bb.jpg" />
-                  <label>Hold My Hand</label><br />
-                  <label>Artist Name</label><br />
-                  <label>Collection Name</label><br />
-                  <audio controls>
-                     <source src="content/audio.mp3" type="audio/mpeg">
-                     Your browser does not support the audio tag.
-                  </audio>
-               </div>
-            </div>
+            <div id="RenderArtistsId" class="row"></div>
          </div>
          <script type="text/javascript">
             var musicListRaw = "";
             var musicList = null;
-            var url = 'https://itunes.apple.com/search?callback=?&term=';
             var renderOutput = document.getElementById("RenderArtistsId");
 
             function findArtist() {
+               var url = 'https://itunes.apple.com/search?callback=?&term=';
                url = url + $("#artistNameId").val();
                console.log(url);
 
+               while (renderOutput.firstChild) {
+                  renderOutput.removeChild(renderOutput.firstChild);
+               }
+
                $.getJSON(url).then(res => {
                   let results = res.results;
-                  //console.log(results);
                   results.forEach(element => {
-                     //console.log(element);
 
                      var musicElement = document.createElement("div");
-                     musicElement.setAttribute("class", "col-md-3");
+                     musicElement.setAttribute("class", "col-md-4");
 
                      var imageElement = document.createElement("img");
                      imageElement.setAttribute("src", element.artworkUrl60.replace(/60x60/g, "250x250"));
 
+                     musicElement.appendChild(imageElement);
+                     musicElement.appendChild(document.createElement("br"));
+
                      var labelElement = document.createElement("label");
                      labelElement.innerHTML = element.trackName;
-                     musicElement.appendChild(imageElement);
                      musicElement.appendChild(labelElement);
+                     musicElement.appendChild(document.createElement("br"));
 
+                     labelElement = document.createElement("label");
+                     labelElement.innerHTML = element.artistName;
+                     musicElement.appendChild(labelElement);
+                     musicElement.appendChild(document.createElement("br"));
 
-                     /*
-                             this.title = song.trackName
-                             //Change 250x250 if you want a larger image
-                             this.albumArt = song.artworkUrl60.replace(/60x60/g, "250x250")
-                             this.artist = song.artistName
-                             this.collection = song.collectionName
-                             this.price = song.collectionPrice
-                           this.preview = song.previewUrl
-                           primaryGenreName
-                     */
+                     labelElement = document.createElement("label");
+                     labelElement.innerHTML = element.collectionName;
+                     musicElement.appendChild(labelElement);
+                     musicElement.appendChild(document.createElement("br"));
 
+                     var audioElement = document.createElement("audio");
+                     audioElement.setAttribute("controls", "");
+                     var sourceElement = document.createElement("source");
+                     sourceElement.setAttribute("src", element.previewUrl);
+                     sourceElement.setAttribute("type", "audio/mpeg");
+                     audioElement.innerHTML = "Your browser does not support the audio tag.";
+                     audioElement.appendChild(sourceElement);
 
-                     //musicElement.appendChild(imageElement);
-                     //musicElement.appendChild(labelElement);
-
+                     musicElement.appendChild(audioElement);
                      renderOutput.appendChild(musicElement);
                   });
 
@@ -108,7 +105,7 @@
             }
          </script>
       </div>
-      <div class="row">
+      <div class="row" style="visibility:hidden;">
          <div class="col-md-12">
             <h2>The original way I wrote my example based on my school assignment.</h2>
          </div>
@@ -117,12 +114,13 @@
             <a href="https://mlmlinkup.com/Search/GetMlmCompanyLogo/3" target="_blank">GetMlmCompanyLogo</a>
          </div>
          <div id="ajaxData" class="col-md-12">
-            <label>
-               Click Twice to Load Data: </lable> <button onclick="loadData()">Load Data</button><br /><br />
-               <label>
-                  Enter Company Id: </lable> <input id="CompanyId" type="text" value=""></input><br />
-                  <button onclick="getImage(document.getElementById('CompanyId').value);">Get Company	Logo</button><br /><br />
-                  <div id="ImgDiv"></div>
+            <label>Click Twice to Load Data: </label>
+            <button onclick="loadData()">Load Data</button><br /><br />
+            <label>Enter Company Id: </label>
+            <input id="CompanyId" type="text" value="" /><br />
+
+            <button onclick="getImage(document.getElementById('CompanyId').value);">Get Company	Logo</button><br /><br />
+            <div id="ImgDiv"></div>
          </div>
 
          <script type="text/javascript">
